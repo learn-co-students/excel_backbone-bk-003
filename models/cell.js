@@ -1,0 +1,1 @@
+Cell = Backbone.Model.extend({});
