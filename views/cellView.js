@@ -1,12 +1,13 @@
 CellView = Backbone.View.extend({
   events : {
-    "keydown" : "handleEnter"
+    "keydown" : "handleEnter",
+    "dblclick" : "handleClick"
   },
   tagName : "td",
   initialize : function(options) {
     this.letter = options.letter;
     this.i = options.i;
-    this.listenTo(this.model, "change", this.reRender)
+    this.listenTo(this.model, "change:viewData", this.reRender)
   },
   render : function() {
     this.$el.append("<input id='"+ this.letter+this.i +"'/>");
@@ -17,13 +18,13 @@ CellView = Backbone.View.extend({
     if (keyCode == 13) {
       var data = this.$el.children().val()
       this.model.set("data", data);
+      this.model.trigger("change:data");
     }
   },
   reRender : function() {
-    if (this.model.data.charAt(0) == "=") {
-      
-    } else {
-      this.$el.children().val(this.model.data);
-    }
+    this.$el.children().val(this.model.get("viewData"));
+  },
+  handleClick : function() {
+    this.$el.children().val(this.model.get("data"));
   }
 })

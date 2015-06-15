@@ -1,9 +1,11 @@
-function Beval () {
+function Beval (data) {
+  this.data = data;
   this.cells = [];
   this.operators = [];
 }
 
-Beval.prototype.parse = function(equation) {
+Beval.prototype.parse = function() {
+  var equation = this.data;
   if (equation.charAt(0) == "=") {
     equation = equation.substring(1);
   }
