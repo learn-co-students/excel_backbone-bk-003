@@ -17,10 +17,16 @@ Cell = Backbone.Model.extend({
           stringToEval = stringToEval + beval.operators.shift(); 
         }
       }
-      this.set("viewData", eval(stringToEval));
+      this.setView(eval(stringToEval));
     } else {
-      this.set("viewData", this.get("data"));
+      this.setView(this.get("data"));
     }
   },
+  setView : function(newData) {
+    this.set("viewData", newData);
+    if (!this.changedAttributes()) {
+      this.trigger("change:viewData");
+    }
+  }
 
 });
