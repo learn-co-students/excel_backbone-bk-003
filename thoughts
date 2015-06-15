@@ -1,5 +1,0 @@
-similar to dots, we have to have a board and a bunch of cells
-events
-on click we need to allow editing of the cell
-on enter we should write the cells data to a model
-the view's render method should either do a calculation and display the result or just display the data
