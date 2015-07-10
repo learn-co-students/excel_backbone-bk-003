@@ -18,7 +18,7 @@ BoardView = Backbone.View.extend({
         $(row).append(cellView);
       }
       this.$el.append(row);
-      this.model.get("cells").push(rowCells);
+      this.model.cells.push(rowCells);
     }
     return this;
   }
