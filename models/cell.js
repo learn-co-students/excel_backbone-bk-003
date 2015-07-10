@@ -14,15 +14,15 @@ Cell = Backbone.Model.extend({
       evaluator.cells.forEach(function(cell) {
         evaledCells.push(app.board.findCell(cell).get("viewData"));
       });
-      while (evaledCells.length > 0) {
-        stringToEval = stringToEval + evaledCells.shift();
+      evaledCells.forEach(function(cell) {
+        stringToEval = stringToEval + cell;
         if (evaluator.operators.length > 0) {
           stringToEval = stringToEval + evaluator.operators.shift(); 
         }
-      }
+      })
       this.setView(eval(stringToEval));
     } else {
-      this.setView(this.get("data"));
+      this.setView(parseInt(this.get("data")));
     }
   },
   setView : function(newData) {

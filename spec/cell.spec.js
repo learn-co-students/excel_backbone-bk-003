@@ -1,33 +1,33 @@
 'use strict';
 
-describe( "#letterAsNumber", function() {
-  it("should give me the numberical equivalent of a letter (only A-F)", function() {
-    expect(app.board.letterAsNumber("C")).toEqual(2)
-  });
-  
-  it("should find my cell in the cells array", function() {
-    app.board = new Board();
-    app.board.cells = [["A1Cell", "A2Cell", "A3Cell"],["B1Cell", "B2Cell", "B3Cell"]]
-    expect(app.board.findCell("A1")).toEqual("A1Cell")
-  });
+describe( "cell", function() {
+  describe( "#recalcViewData", function() {
+    it("should be able to recalculate the data to be displayed to the user", function() {
+      var cell = new Cell();
+      cell.set("data", "7")
+      cell.recalcViewData();
+      expect(cell.get("viewData")).toEqual(7);
+    });
 
-  it("should find my cell in the cells array 2", function() {
-    app.board = new Board();
-    app.board.cells = [["A1Cell", "A2Cell", "A3Cell"],["B1Cell", "B2Cell", "B3Cell"]]
-    expect(app.board.findCell("B2")).toEqual("B2Cell")
+    it("should be able to recalculate the data to be displayed to the user for equations", function() {
+      var cell = new Cell();
+      var cellTwo = new Cell();
+      app.board.cells = [[cell, cellTwo]]
+      cellTwo.set("data", "7")
+      cell.set("data", "=A2")
+      expect(cellTwo.get("viewData")).toEqual(7);
+    });
+
+    it("should be able to recalculate the data to be displayed to the user for equations even recursively", function() {
+      var cell = new Cell();
+      var cellTwo = new Cell();
+      var cellThree = new Cell();
+      app.board.cells = [[cell, cellTwo, cellThree]]
+      cellTwo.set("data", "7")
+      cell.set("data", "=A2")
+      cellThree.set("data", "=A1+A2")
+      expect(cellThree.get("viewData")).toEqual(14);
+    }); 
   });
    
-});
-describe( "#findCellBelow", function() {
-  it("should be able to find me the cell below my cell", function() {
-    app.board = new Board();
-    app.board.cells = [["A1Cell", "A2Cell", "A3Cell"],["B1Cell", "B2Cell", "B3Cell"]]
-    expect(app.board.findCellBelow("B2")).toEqual("B3Cell")
-  });
-
-  it("should be able to find me the cell below my cell 2", function() {
-    app.board = new Board();
-    app.board.cells = [["A1Cell", "A2Cell", "A3Cell"],["B1Cell", "B2Cell", "B3Cell"]]
-    expect(app.board.findCellBelow("A1")).toEqual("A2Cell")
-  });
 });
