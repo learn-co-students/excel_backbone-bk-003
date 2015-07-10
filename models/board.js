@@ -10,5 +10,11 @@ Board = Backbone.Model.extend({
     var letter = identifier.charAt(0);
     var number = identifier.charAt(1);
     return this.get("cells")[number][this.letterAsNumber(letter)];
+  },
+  findCellBelow : function(identifier) {
+    var number = identifier.charAt(1);
+    var letter = identifier.charAt(0);
+    var newIdent = letter + (parseInt(number) + 1);
+    return this.findCell(newIdent);
   }
 })

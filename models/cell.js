@@ -1,4 +1,7 @@
 Cell = Backbone.Model.extend({
+  defaults : {
+    focus : 0
+  },
   initialize : function() {
     this.on("change:data", this.recalcViewData)
   },
@@ -27,6 +30,6 @@ Cell = Backbone.Model.extend({
     if (!this.changedAttributes()) {
       this.trigger("change:viewData");
     }
-  }
+  },
 
 });
