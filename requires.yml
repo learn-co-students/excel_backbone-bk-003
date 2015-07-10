@@ -1,0 +1,19 @@
+# A list of javascript files required for the project, in dependency order
+javascripts:
+  files:
+    - custom/evaluator.js
+    - lib/jquery.js
+    - lib/underscore.js
+    - lib/backbone.js
+    - models/board.js
+    - models/cell.js
+    - views/cellView.js
+    - views/boardView.js
+    - app.js
+  specs:
+    - lib/jasmine-jquery.js
+    - spec/board.spec.js
+    - spec/boardView.spec.js
+    - spec/cell.spec.js
+    - spec/cellView.spec.js
+    - spec/evaluator.spec.js

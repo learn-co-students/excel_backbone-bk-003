@@ -12,7 +12,7 @@ Cell = Backbone.Model.extend({
       var evaledCells = [];
       var stringToEval = "";
       beval.cells.forEach(function(cell) {
-        evaledCells.push(board.findCell(cell).get("viewData"));
+        evaledCells.push(app.board.findCell(cell).get("viewData"));
       });
       while (evaledCells.length > 0) {
         stringToEval = stringToEval + evaledCells.shift();

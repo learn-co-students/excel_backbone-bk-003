@@ -23,7 +23,7 @@ CellView = Backbone.View.extend({
       this.storeData();
     }
     if (keyCode == 13) {
-      var cell = board.findCellBelow(this.location())
+      var cell = app.board.findCellBelow(this.location())
       cell.set("focus", cell.get("focus") + 1);
     }
   },

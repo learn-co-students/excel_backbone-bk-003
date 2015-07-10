@@ -1,3 +1,4 @@
-board = new Board();
-boardView = new BoardView({model : board});
-$("body").append(boardView.render().el);
+app = {};
+app.board = new Board();
+app.boardView = new BoardView({model : board});
+$("body").append(app.boardView.render().el);
