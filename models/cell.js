@@ -7,17 +7,17 @@ Cell = Backbone.Model.extend({
   },
   recalcViewData : function() {
     if (this.get("data").charAt(0) == "=") {
-      var beval = new Evaluator(this.get("data"));
-      beval.parse();
+      var evaluator = new Evaluator(this.get("data"));
+      evaluator.parse();
       var evaledCells = [];
       var stringToEval = "";
-      beval.cells.forEach(function(cell) {
+      evaluator.cells.forEach(function(cell) {
         evaledCells.push(app.board.findCell(cell).get("viewData"));
       });
       while (evaledCells.length > 0) {
         stringToEval = stringToEval + evaledCells.shift();
-        if (beval.operators.length > 0) {
-          stringToEval = stringToEval + beval.operators.shift(); 
+        if (evaluator.operators.length > 0) {
+          stringToEval = stringToEval + evaluator.operators.shift(); 
         }
       }
       this.setView(eval(stringToEval));
