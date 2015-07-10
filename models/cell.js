@@ -7,7 +7,7 @@ Cell = Backbone.Model.extend({
   },
   recalcViewData : function() {
     if (this.get("data").charAt(0) == "=") {
-      var beval = new Beval(this.get("data"));
+      var beval = new Evaluator(this.get("data"));
       beval.parse();
       var evaledCells = [];
       var stringToEval = "";

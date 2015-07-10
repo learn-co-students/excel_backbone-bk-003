@@ -1,10 +1,10 @@
-function Beval (data) {
+function Evaluator (data) {
   this.data = data;
   this.cells = [];
   this.operators = [];
 }
 
-Beval.prototype.parse = function() {
+Evaluator.prototype.parse = function() {
   var equation = this.data;
   if (equation.charAt(0) == "=") {
     equation = equation.substring(1);
@@ -20,7 +20,7 @@ Beval.prototype.parse = function() {
   }
 }
 
-Beval.prototype.getOperation = function(equation) {
+Evaluator.prototype.getOperation = function(equation) {
   if (equation.length == 0) {
     return "";
   }
