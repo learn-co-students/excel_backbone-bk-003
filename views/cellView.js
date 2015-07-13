@@ -1,23 +1,23 @@
 CellView = Backbone.View.extend({
   events : {
-    "keydown" : "handleEnter",
+    "keydown" : "handleKeydown",
     "dblclick" : "handleClick"
   },
   tagName : "td",
   initialize : function(options) {
     this.letter = options.letter;
-    this.i = options.i;
+    this.y = options.y;
     this.listenTo(this.model, "change:viewData", this.reRender)
     this.listenTo(this.model, "change:focus", this.setFocus)
   },
   render : function() {
-    this.$el.append("<input id='"+ this.letter+this.i +"'/>");
+    this.$el.append("<input id='"+ this.location() +"'/>");
     return this
   },
   location : function() {
-    return this.letter + this.i;
+    return this.letter + this.y;
   },
-  handleEnter : function(event) {
+  handleKeydown : function(event) {
     var keyCode = (event.keyCode ? event.keyCode : event.which);   
     if (keyCode == 13 || keyCode == 9) {
       this.storeData();
@@ -39,6 +39,6 @@ CellView = Backbone.View.extend({
     this.$el.children().val(this.model.get("data"));
   },
   setFocus : function() {
-    $("#" + this.letter + this.i).focus();
+    $("#" + this.location()).focus();
   }
 })

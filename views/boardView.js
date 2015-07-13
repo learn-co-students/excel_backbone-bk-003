@@ -9,7 +9,7 @@ BoardView = Backbone.View.extend({
         if (i&&j) {
           var cell = new Cell();
           rowCells.push(cell)
-          var cellView = new CellView({i : i, letter : letter, model : cell}).render().el;
+          var cellView = new CellView({y : i, letter : letter, model : cell}).render().el;
         }
         else { 
           var text = i||letter;
