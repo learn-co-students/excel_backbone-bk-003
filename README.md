@@ -2,15 +2,15 @@
 
 ## Objective
 We're going to build a clone of Excel Spreadsheets.
-You can see an example of what we're aiming to build at:
-http://learn-co-curriculum.github.io/excel_backbone/
+You can see an example of what we're aiming to build [here](http://learn-co-curriculum.github.io/excel_backbone/).
+
 
 ## Functionality
 #### Enter Data
 Click on a cell and enter numbers. Then hit enter or tab to store the data. (The data never gets stored unless you use one of these two keys.)
 
 #### Edit formulas
-Double click on a cell to edit its formula. Formulas must be of the form "=A1 + B1" (whitespace ignored), but you can't use parenthesis. You can use as many operators as you want, ie. "=A1 + B1 + C1 * B2", and you can use formulas that specify cells that themselves have formulas (recursion!).
+Double click on a cell to edit its formula. Formulas must be of the form `=A1 + B1` (whitespace ignored), but you can't use parenthesis. You can use as many operators as you want, ie. `=A1 + B1 + C1 * B2`, and you can use formulas that specify cells that themselves have formulas (recursion!).
 
 #### Recalculating values
 If you click on a cell and hit enter, it makes that cell recalculate. It will not recalculate all dependencies of that cell automatically, though. Once you've played around with the live version it's time to start building your own.
@@ -28,7 +28,7 @@ We are going to need some object that manages the cells, and we can use a POJO (
 I like to have an object that can draw the whole board -- some kind of `boardView` object -- and then individual views which represent each piece of the larger whole. So a `boardView` and a cellView.  The `boardView` essentially iterates through the cells and asks each cell to render itself and just assembles all the cells on the board.
 
 #### Doing the Math
-The last major piece we're going to need is something that evaluates the formulas. Let's write a Class (Function) that knows how to parse formulas in the form "=A1 + B2" and puts them into arrays of Cell coordinates and operators. Then we can just leverage JavaScript's `eval` function to ask it to add or multiply things for us.
+The last major piece we're going to need is something that evaluates the formulas. Let's write a Class (Function) that knows how to parse formulas in the form `=A1 + B2` and puts them into arrays of Cell coordinates and operators. Then we can just leverage JavaScript's `eval` function to ask it to add or multiply things for us.
 
 #### Storing the Formula and Its Output
 Another tricky piece is how to store both the formula and the evaluated formula's output. We could store a `data` attribute on the cell model, which is just whatever the user has input. We could also store a `viewData` attribute, which would be what we want to render to the user. If the data the user enters begins with an equals sign, we know we're going to need to evaluate it and store that in `viewData`, otherwise `viewData == data`.
