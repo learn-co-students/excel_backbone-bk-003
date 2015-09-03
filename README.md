@@ -35,5 +35,5 @@ The last major piece we're going to need is something that evaluates the formula
 #### Storing the Formula and Its Output
 Another tricky piece is how to store both the formula and the evaluated formula's output. We could store a `data` attribute on the cell model, which is just whatever the user has input. We could also store a `viewData` attribute, which would be what we want to render to the user. If the data the user enters begins with an equals sign, we know we're going to need to evaluate it and store that in `viewData`, otherwise `viewData == data`.
 
-The CSS has already been included for you.
-
+## Instructions
+Build out your own Backbone Spreadsheets by following along with the tests in the `spec` folder. The CSS has already been included for you.
