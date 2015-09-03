@@ -19,7 +19,7 @@ If you click on a cell and hit enter, it makes that cell recalculate. It will no
 
 Once you've played around with the live version it's time to start building your own.
 
-## Getting Started
+## About
 If you start thinking in Backbone terms, there are a bunch of different ways we could do this. 
 
 #### Using collections? Maybe not.
