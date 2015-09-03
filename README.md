@@ -3,7 +3,7 @@
 ![spreadsheet](https://web-dev-readme-photos.s3.amazonaws.com/js/spreadsheet.png)
 
 ## Objective
-We're going to build a clone of Excel Spreadsheets.
+We're going to build a clone of Microsoft Excel / Google Spreadsheets.
 You can see an example of what we're aiming to build [here](http://learn-co-curriculum.github.io/excel_backbone/).
 
 
