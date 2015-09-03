@@ -10,14 +10,10 @@ http://learn-co-curriculum.github.io/excel_backbone/
 Click on a cell and enter numbers. Then hit enter or tab to store the data. (The data never gets stored unless you use one of these two keys.)
 
 #### Edit formulas
-Double click on a cell to edit its formula.
-
-Formulas must be of the form "=A1 + B1" (whitespace ignored), but you can't use parenthesis. You can use as many operators as you want, ie. "=A1 + B1 + C1 * B2", and you can use formulas that specify cells that themselves have formulas (recursion!).
+Double click on a cell to edit its formula. Formulas must be of the form "=A1 + B1" (whitespace ignored), but you can't use parenthesis. You can use as many operators as you want, ie. "=A1 + B1 + C1 * B2", and you can use formulas that specify cells that themselves have formulas (recursion!).
 
 #### Recalculating values
-If you click on a cell and hit enter, it makes that cell recalculate. It will not recalculate all dependencies of that cell automatically, though.
-
-Once you've played around with the live version it's time to start building your own.
+If you click on a cell and hit enter, it makes that cell recalculate. It will not recalculate all dependencies of that cell automatically, though. Once you've played around with the live version it's time to start building your own.
 
 ## About
 If you start thinking in Backbone terms, there are a bunch of different ways we could do this. 
