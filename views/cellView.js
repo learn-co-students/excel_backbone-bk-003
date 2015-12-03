@@ -32,6 +32,7 @@ CellView = Backbone.View.extend({
   },
   reRender : function() {
     if (this.model) {
+      this.model.trigger('change:data')
       this.$el.children().val(this.model.get('viewData') || '')
     }
   },
