@@ -5,11 +5,13 @@ CellView = Backbone.View.extend({
   },
   tagName : "td",
   initialize : function(options) {
-    var input = $('<input>').attr({id : options.letter+options.y})
-    this.$el.append(input)
-    this.listenTo(this.model, 'change:viewData', this.reRender)
+    this.options = options
+    this.render()
+    this.listenTo(this.model, 'change:viewData', this.reRender, this)
+    this.listenTo(this.model, 'change:focus', this.Focus)
   },
   render : function() {
+    this.$el.append($('<input>').attr({id : this.options.letter+this.options.y}))
   },
   location : function() {
     return this.$('input')[0].id
@@ -18,21 +20,30 @@ CellView = Backbone.View.extend({
     if (event.keyCode == 13) {
       this.storeData()
       this.setFocus()
+      this.reRender()
     };
     if (event.keyCode == 9) {
       this.storeData()
+      this.reRender()
     };
   },
   storeData : function() {
     this.model.set('data', this.$('input').val())
   },
   reRender : function() {
+    if (this.model) {
+      this.$el.children().val(this.model.get('viewData') || '')
+    }
   },
   handleClick : function() {
     this.$('input').val(this.model.get('data'))
   },
   setFocus : function() {
-    app.board.findCell(this.location()).set('focus', 0)
-    app.board.findCellBelow(this.location()).set('focus', 1)
+    var cell = app.board.findCellBelow(this.location())
+    cell.set('focus', cell.get('focus')+1)
+  },
+  Focus : function() {
+    this.$el.children().focus();
   }
+
 })

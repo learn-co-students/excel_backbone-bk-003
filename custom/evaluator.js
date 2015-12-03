@@ -5,9 +5,7 @@ function Evaluator (data) {
 }
 
 Evaluator.prototype.parse = function() {
-	var arr = this.data.split(/[^\w\d]/).filter(function(el){return el.match(/[^\s]/)})
-	this.cells = arr
-	var arr = this.data.split(/[\w\d\=\s]/).filter(function(el){return el.match(/[^\s]/)})
-	this.operators = arr
+	this.cells = this.data.split(/[^\w\d]/).filter(function(el){return el.match(/[^\s]/)})
+	this.operators = this.data.split(/[\w\d\=\s]/).filter(function(el){return el.match(/[^\s]/)})
 }
 

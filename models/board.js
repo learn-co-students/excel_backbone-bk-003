@@ -13,6 +13,5 @@ Board.prototype.findCell = function(identifier) {
 }
 
 Board.prototype.findCellBelow = function(identifier) {
-	debugger
 	return this.cells[Number(identifier.match(/\d+/))+1][this.letterAsNumber(identifier)]
 }
