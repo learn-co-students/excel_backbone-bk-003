@@ -9,8 +9,10 @@ Cell = Backbone.Model.extend({
   },
   recalcViewData: function() {
     if (this.get('data').match(/\=/)) {
-      var evaluator = new Evaluator(this.get('data'))
-      evaluator.parse()
+      var evaluator = new Evaluator(this.get('data'));
+      evaluator.parse();
+
+
       if (evaluator.operators.length > 0) {
         var sum = app.board.findCell(evaluator.cells[0]).get('viewData');
         for (var i = 1; i < evaluator.cells.length; i++) {
@@ -20,9 +22,9 @@ Cell = Backbone.Model.extend({
       } else {
         var sum = app.board.findCell(evaluator.cells[0]).get('viewData');
       }
-      this.set('viewData', Number(sum));
+      this.set('viewData', +(sum));
     } else {
-      this.set('viewData', Number(this.get('data')))
+      this.set('viewData', +(this.get('data')))
     };
   },
   setView: function(newData) {
