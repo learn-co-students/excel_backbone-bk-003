@@ -1,23 +1,51 @@
 CellView = Backbone.View.extend({
-  events : {
-
+  events: {
+    "keydown": "handleKeydown",
+    "dblclick": "handleClick"
   },
-  tagName : "td",
-  initialize : function(options) {
+  tagName: "td",
+  initialize: function(options) {
+    this.options = options;
+    this.letter = options.letter;
+    this.y = options.y;
+    this.render();
+    this.listenTo(this.model, "change:viewData", this.reRender)
+    this.listenTo(this.model, "change:focus", this.setFocus)
   },
-  render : function() {
+  render: function() {
+    var input = $('<input>');
+    input.attr('id', this.options.letter + this.options.y);
+    this.$el.html(input);
+    return this;
   },
-  location : function() {
+  location: function() {
+    return this.letter + this.y;
   },
-  handleKeydown : function(event) {
+  handleEnter: function(event) {
+    var keyCode = (event.keyCode ? event.keyCode : event.which);
+    if (keyCode == 13 || keyCode == 9) {
+      this.storeData();
+    }
+    if (keyCode == 13) {
+      var cell = app.board.findCellBelow(this.location())
+      cell.set("focus", cell.get("focus") + 1);
+    }
   },
-  storeData : function() {
-
+  storeData: function() {
+    var data = this.$el.children().val()
+    this.model.set("data", data);
+    this.model.trigger("change:data");
   },
-  reRender : function() {
+  reRender: function() {
+    this.$el.children().val(this.model.get("viewData"));
   },
-  handleClick : function() {
+  handleClick: function() {
+    this.$el.children().val(this.model.get("data"));
   },
-  setFocus : function() {
+  setFocus: function() {
+    $("#" + this.letter + this.i).focus();
+  },
+  handleKeydown: function(event){
+    this.handleEnter(event);
   }
 })

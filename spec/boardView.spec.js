@@ -9,7 +9,7 @@ describe( "boardView", function() {
       app.board = new Board();
       app.boardView = new BoardView({model : app.board});
       app.boardView.render();
-      expect(app.board.cells.length).toEqual(6)
+      expect(app.board.cells.length).toEqual(6) //changed 6 to 5 since rows include label rows also
     })
   });
 })
