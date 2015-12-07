@@ -9,6 +9,7 @@ describe("board", function() {
     it("should find my cell in the cells array", function() {
       app.board = new Board();
       app.board.cells = [[],["A1Cell", "B1Cell", "C1Cell"],["A2Cell", "B2Cell", "C2Cell"]]
+      
       expect(app.board.findCell("A1")).toEqual("A1Cell")
     });
 
