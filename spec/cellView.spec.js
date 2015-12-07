@@ -2,14 +2,14 @@
 describe( "cellView", function() {
   describe( "#initialize/location", function() {
     it("should store all coordinates in an array in order", function() {
-      var cellView = new CellView({letter : "A", y: 1});
+      var cellView = new CellView({letter : "A", y: 1, model : new Cell()});
       expect(cellView.location()).toEqual("A1");
     })
   });
   describe( "#handleKeydown", function() {
     it("should call the handleKeydown function on keydown", function() {
       var spy = spyOn(CellView.prototype, "handleKeydown");
-      var cellView = new CellView({letter : "A", y: 1});
+      var cellView = new CellView({letter : "A", y: 1, model : new Cell()});
       cellView.$el.keydown();
       expect(cellView.handleKeydown).toHaveBeenCalled();
     })
@@ -17,7 +17,7 @@ describe( "cellView", function() {
 
   describe( "#handleKeydown", function() {
     it("should save the data on enter", function() {
-      var cellView = new CellView({letter : "A", y: 1});
+      var cellView = new CellView({letter : "A", y: 1, model : new Cell()});
       var spy = spyOn(cellView, "storeData");
       var e = $.Event("keydown", {keyCode: 13});
       cellView.$el.trigger(e);
@@ -27,7 +27,7 @@ describe( "cellView", function() {
 
   describe( "#handleKeydown", function() {
     it("should save the data on enter", function() {
-      var cellView = new CellView({letter : "A", y: 1});
+      var cellView = new CellView({letter : "A", y: 1, model : new Cell()});
       var spy = spyOn(cellView, "storeData");
       var e = $.Event("keydown", {keyCode: 9});
       cellView.$el.trigger(e);
@@ -37,7 +37,7 @@ describe( "cellView", function() {
 
   describe( "#handleKeydown", function() {
     it("should save the data on tab", function() {
-      var cellView = new CellView({letter : "A", y: 1});
+      var cellView = new CellView({letter : "A", y: 1, model : new Cell()});
       var spy = spyOn(cellView, "storeData");
       var e = $.Event("keydown", {keyCode: 13});
       cellView.$el.trigger(e);
@@ -47,7 +47,7 @@ describe( "cellView", function() {
 
   describe( "#handleKeydown", function() {
     it("should not save the data on any key other than tab or enter", function() {
-      var cellView = new CellView({letter : "A", y: 1});
+      var cellView = new CellView({letter : "A", y: 1, model : new Cell()});
       var spy = spyOn(cellView, "storeData");
       var e = $.Event("keydown", {keyCode: 12});
       cellView.$el.trigger(e);
